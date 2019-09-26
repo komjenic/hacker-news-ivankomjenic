@@ -5,22 +5,28 @@ import GlobalStyles from './styles/globals';
 import { Provider } from 'react-redux';
 import configureStore from './store/index';
 import * as serviceWorker from './serviceWorker';
+// import hackerNewsApi from './services/hackerNewsApi';
 
-const renderApp = () => {
-    const initialState = {};
-    const store = configureStore(initialState);
-
-    store.dispatch({ type: '@hnIvan/@@INIT' });
-
-    ReactDOM.render(
-        <Provider store={store}>
-            <GlobalStyles />
-            <App />
-        </Provider>,
-        document.getElementById('root')
-    );
+const page = async () => {
+    // console.log(await hackerNewsApi.getTopStoryIds());
+    // const pageIds = hackerNewsApi.getStoriesByPage(topStoryIds, 0);
+    // console.log(topStoryIds);
+    // console.log(await hackerNewsApi.getStoriesByPage(topStoryIds, 0));
+    // console.log(await hackerNewsApi.getStory(8863));
 };
-renderApp();
+page();
+
+const initialState = {};
+const store = configureStore(initialState);
+store.dispatch({ type: '@hnIvan/@@INIT' });
+
+ReactDOM.render(
+    <Provider store={store}>
+        <GlobalStyles />
+        <App />
+    </Provider>,
+    document.getElementById('root')
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
