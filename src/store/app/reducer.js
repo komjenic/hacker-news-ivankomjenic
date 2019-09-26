@@ -1,7 +1,9 @@
 import { actionTypes } from './actions';
+import { layouts, themes } from './utils';
 
 const getInitialState = () => ({
-    theme: 'dark'
+    theme: themes.dark,
+    layout: layouts.list
 });
 
 const app = (state = getInitialState(), { type, payload }) => {
@@ -11,7 +13,11 @@ const app = (state = getInitialState(), { type, payload }) => {
                 ...state,
                 ...payload //{theme: <VALUE>}
             };
-
+        case actionTypes.SET_LAYOUT:
+            return {
+                ...state,
+                ...payload
+            };
         default:
             return state;
     }

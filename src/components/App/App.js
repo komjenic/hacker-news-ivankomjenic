@@ -1,34 +1,31 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { ThemeProvider } from 'styled-components';
-import { colorsDark } from '../../styles/palette';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import List from '../List/index';
 import Loader from '../Loader/index';
+import Nav from '../Nav/index';
+import Grid from '../Grid/index';
 
+import { layouts, themes } from '../../store/app/utils';
+import { colorsDark, colorsLight } from '../../styles/palette';
 import { Wrapper, Title } from './styles';
 
 class App extends React.Component {
-    static defaultProps = {
-        stories: []
-    };
-
-    static propTypes = {
-        stories: PropTypes.array.isRequired,
-        page: PropTypes.number.isRequired,
-        storyIds: PropTypes.array.isRequired,
-        isFetching: PropTypes.bool.isRequired,
-        hasMoreStories: PropTypes.bool.isRequired,
-        fetchStories: PropTypes.func.isRequired,
-        fetchStoriesFirstPage: PropTypes.func.isRequired
-    };
-
     componentDidMount() {
         this.props.fetchStoriesFirstPage();
         console.log(this.props);
     }
     componentDidUpdate(prevProps, prevState) {
+        this.setBodyBackgroundColor();
         console.log(this.props);
+    }
+
+    setBodyBackgroundColor() {
+        if (this.props.theme === themes.light) {
+            document.body.style = `background-color: ${colorsLight.background};`;
+        } else {
+            document.body.style = `background-color: ${colorsDark.background};`;
+        }
     }
 
     fetchStories = () => {
@@ -39,12 +36,15 @@ class App extends React.Component {
     };
 
     render() {
-        const { stories, hasMoreStories } = this.props;
+        const { stories, layout, hasMoreStories, theme } = this.props;
         return (
-            <ThemeProvider theme={colorsDark}>
+            <ThemeProvider
+                theme={theme === themes.light ? colorsLight : colorsDark}
+            >
                 <div>
+                    <Nav />
                     <Wrapper>
-                        <Title>Hacker News Ivan Komjenic</Title>
+                        <Title>Hacker News</Title>
                         <InfiniteScroll
                             dataLength={stories.length}
                             next={this.fetchStories}
@@ -55,7 +55,11 @@ class App extends React.Component {
                                 overflow: 'visible'
                             }}
                         >
-                            <List stories={stories} />
+                            {layout === layouts.list ? (
+                                <List stories={stories} />
+                            ) : (
+                                <Grid stories={stories} />
+                            )}
                         </InfiniteScroll>
                     </Wrapper>
                 </div>
