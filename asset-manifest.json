@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/hacker-news-ivankomjenic/static/js/main.3b85a395.chunk.js",
+    "main.js.map": "/hacker-news-ivankomjenic/static/js/main.3b85a395.chunk.js.map",
+    "runtime-main.js": "/hacker-news-ivankomjenic/static/js/runtime-main.ca1cd8a9.js",
+    "runtime-main.js.map": "/hacker-news-ivankomjenic/static/js/runtime-main.ca1cd8a9.js.map",
+    "static/js/2.a2de260f.chunk.js": "/hacker-news-ivankomjenic/static/js/2.a2de260f.chunk.js",
+    "static/js/2.a2de260f.chunk.js.map": "/hacker-news-ivankomjenic/static/js/2.a2de260f.chunk.js.map",
+    "index.html": "/hacker-news-ivankomjenic/index.html",
+    "precache-manifest.f7e721acb923a6784050a2190c4c21e8.js": "/hacker-news-ivankomjenic/precache-manifest.f7e721acb923a6784050a2190c4c21e8.js",
+    "service-worker.js": "/hacker-news-ivankomjenic/service-worker.js"
+  }
+}
