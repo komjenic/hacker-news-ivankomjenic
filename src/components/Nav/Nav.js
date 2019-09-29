@@ -19,6 +19,7 @@ const Nav = ({ layout, theme, setLayout, setTheme }) => (
                     <ExternalLink
                         href='https://github.com/komjenic/hacker-news-ivankomjenic'
                         target='_blank'
+                        rel='noopener noreferrer'
                     >
                         <Logo src='./logo192.png' alt='logo' /> Ivan Komjenic
                         Source Code
