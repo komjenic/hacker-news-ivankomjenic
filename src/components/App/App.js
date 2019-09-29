@@ -13,11 +13,9 @@ import { Wrapper, Title } from './styles';
 class App extends React.Component {
     componentDidMount() {
         this.props.fetchStoriesFirstPage();
-        console.log(this.props);
     }
     componentDidUpdate(prevProps, prevState) {
         this.setBodyBackgroundColor();
-        console.log(this.props);
     }
 
     setBodyBackgroundColor() {
